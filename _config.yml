@@ -1,0 +1,58 @@
+title: Seiche Waves by Riya
+description: "Essays, memos, and papers on geopolitics, international trade, and everything under the sun and sea."
+baseurl: "/seichewavesbyriya"   # must match your GitHub repo name exactly
+url: "https://RiyaNagar.github.io"
+
+markdown: kramdown
+theme: null
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:path/
+  memos:
+    output: true
+    permalink: /memos/:path/
+  papers:
+    output: true
+    permalink: /papers/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "essays"
+    values:
+      layout: "post"
+      collection_name: "essays"
+  - scope:
+      path: ""
+      type: "memos"
+    values:
+      layout: "post"
+      collection_name: "memos"
+  - scope:
+      path: ""
+      type: "papers"
+    values:
+      layout: "post"
+      collection_name: "papers"
+
+nav:
+  - title: About
+    url: /about/
+  - title: Essays
+    url: /essays/
+  - title: Memos
+    url: /memos/
+  - title: Papers
+    url: /papers/
+  - title: Archives
+    url: /archives/
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

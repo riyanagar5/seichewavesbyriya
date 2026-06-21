@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="post-meta-row">
+    <div>
+      <h1>{{ page.title }}</h1>
+      <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+    </div>
+    {% if page.tags and page.tags.size > 0 %}
+      {% include tag-row.html tags=page.tags %}
+    {% endif %}
+  </div>
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
