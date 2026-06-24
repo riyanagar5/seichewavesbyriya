@@ -1,7 +1,7 @@
 title: Seiche Waves by Riya
 description: "Essays, memos, and papers on geopolitics, international trade, and everything under the sun and sea."
 baseurl: "/seichewavesbyriya"   # must match your GitHub repo name exactly
-url: "https://RiyaNagar.github.io"
+url: "https://riyanagar5.github.io"
 
 markdown: kramdown
 theme: null
