@@ -16,7 +16,7 @@ title: Home
   </div>
 </section>
 
-<h2 class="section-title">Read, Ponder, Question the Waves</h2>
+<h2 class="section-title">Read, Ponder and Question </h2>
 
 {% assign featured = "" | split: "" %}
 {% assign featured = featured | concat: site.essays %}
