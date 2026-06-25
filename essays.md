@@ -27,7 +27,17 @@ title: Essays
       <a class="grid-card" href="{{ item.url | relative_url }}">
         <img src="{{ item.thumbnail | default: '/assets/images/placeholder-thumb.jpg' | relative_url }}" alt="">
         <div class="grid-card-body">
-          <p class="grid-card-date">{{ item.date | date: "%b %-d, %Y" }}</p>
+          <div class="grid-card-top-row">
+            <p class="grid-card-date">{{ item.date | date: "%b %-d, %Y" }}</p>
+            {% if item.tags and item.tags.size > 0 %}
+              <div class="tag-row-card">
+                {% for tag in item.tags limit: 2 %}
+                  {% assign slug = tag | downcase | replace: " ", "-" %}
+                  <a class="tag-pill-sm" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
           <h3>{{ item.title }}</h3>
           <p>{{ item.description }}</p>
           <span class="read-more">Read more &rarr;</span>
