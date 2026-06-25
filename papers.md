@@ -25,7 +25,17 @@ title: Papers
       <li class="paper-item">
         <img src="{{ item.thumbnail | default: '/assets/images/placeholder-thumb.jpg' | relative_url }}" alt="">
         <div class="paper-item-body">
-          <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+          <div class="grid-card-top-row">
+            <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+            {% if item.tags and item.tags.size > 0 %}
+              <div class="tag-row-card">
+                {% for tag in item.tags limit: 2 %}
+                  {% assign slug = tag | downcase | replace: " ", "-" %}
+                  <a class="tag-pill-sm" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
           <span class="post-date">{{ item.date | date: "%b %-d, %Y" }}</span>
           <p>{{ item.description }}</p>
           <a class="read-more" href="{{ item.url | relative_url }}">Read more &rarr;</a>
