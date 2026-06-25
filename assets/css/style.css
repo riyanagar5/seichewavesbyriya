@@ -5,8 +5,8 @@
 body {
   margin: 0;
   font-family: 'Lora', Georgia, serif;
-  color: #222;
-  background: #fafaf8;
+  color: #1f2733;
+  background: #f4f6f9;
   line-height: 1.65;
 }
 
@@ -14,10 +14,11 @@ h1, h2, h3, h4 {
   font-family: 'Playfair Display', 'EB Garamond', Georgia, serif;
   font-weight: 600;
   margin: 0;
+  color: #16243f;
 }
 
 a {
-  color: #1b2a4a;
+  color: #2b4570;
   text-decoration: none;
 }
 a:hover {
@@ -108,7 +109,7 @@ a:hover {
   text-align: left;
   margin-bottom: 36px;
   padding-top: 10px;
-  border-top: 1px solid #e6e3dc;
+  border-top: 2px solid #cdd9ea;
 }
 
 /* ---- Featured grid (3x3 on home, 2x2 on essays/memos) ---- */
@@ -125,15 +126,16 @@ a:hover {
 
 .grid-card {
   display: block;
-  border: 1px solid #e6e3dc;
+  border: 1px solid #d7e0ec;
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
-  transition: box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .grid-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(43, 69, 112, 0.1);
+  border-color: #a9bcd9;
   text-decoration: none;
 }
 
@@ -148,9 +150,17 @@ a:hover {
   padding: 18px 20px 20px;
 }
 
+.grid-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
 .grid-card-date {
   font-size: 0.82rem;
-  color: #999;
+  color: #6b7688;
   font-family: 'Lora', serif;
 }
 
@@ -169,6 +179,7 @@ a:hover {
 .grid-card .read-more {
   font-size: 0.85rem;
   font-weight: 600;
+  color: #2b4570;
 }
 
 /* ---- Tags ---- */
@@ -188,21 +199,45 @@ a:hover {
   display: inline-block;
   font-size: 0.78rem;
   padding: 4px 12px;
-  border: 1px solid #c9c4b6;
+  border: 1px solid #aebfdb;
   border-radius: 20px;
-  color: #555;
+  color: #2b4570;
   font-family: 'Lora', serif;
+  background: #eef2f9;
 }
 
 .tag-pill:hover {
-  background: #1b2a4a;
+  background: #2b4570;
   color: #fff;
-  border-color: #1b2a4a;
+  border-color: #2b4570;
   text-decoration: none;
 }
 
-.grid-card-tags {
-  margin-bottom: 8px;
+/* Small variant used inside grid cards, next to the date */
+.tag-row-card {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.tag-pill-sm {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  border: 1px solid #aebfdb;
+  border-radius: 14px;
+  color: #2b4570;
+  font-family: 'Lora', serif;
+  background: #eef2f9;
+  white-space: nowrap;
+}
+
+.tag-pill-sm:hover {
+  background: #2b4570;
+  color: #fff;
+  border-color: #2b4570;
+  text-decoration: none;
 }
 
 /* ---- List view (essays/memos full list, archives) ---- */
@@ -217,7 +252,7 @@ a:hover {
   justify-content: space-between;
   align-items: baseline;
   padding: 16px 0;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #dde4ee;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -228,20 +263,18 @@ a:hover {
 }
 
 .post-date {
-  color: #999;
+  color: #6b7688;
   font-size: 0.88rem;
   white-space: nowrap;
   font-family: 'Lora', serif;
-}
-
-/* ---- Papers list (with thumbnail) ---- */
+}/* ---- Papers list (with thumbnail) ---- */
 .paper-list { list-style: none; padding: 0; margin: 0 0 60px; }
 
 .paper-item {
   display: flex;
   gap: 20px;
   padding: 22px 0;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #dde4ee;
 }
 
 .paper-item img {
@@ -261,6 +294,51 @@ a:hover {
   font-size: 0.92rem;
   color: #555;
   margin: 6px 0;
+}
+
+/* ---- Carousel (featured grid rotation) ---- */
+.carousel-wrap {
+  margin-bottom: 20px;
+}
+
+.carousel-page.post-grid {
+  margin-bottom: 24px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #aebfdb;
+  background: #d7e0ec;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot.active {
+  background: #2b4570;
+  transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+  background: #5d7bab;
+}
+
+/* ---- Quote intro line ---- */
+.quote-intro {
+  text-align: center;
+  font-style: italic;
+  color: #4a5a78;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
 }
 
 /* ---- Wide banner / quote section ---- */
@@ -309,7 +387,7 @@ a:hover {
 
 /* ---- Newsletter / subscribe ---- */
 .subscribe-section {
-  background: #f1efe8;
+  background: #e9eef6;
   border-radius: 14px;
   padding: 40px 48px;
   text-align: center;
@@ -336,7 +414,7 @@ a:hover {
 .subscribe-form input[type="email"] {
   font-family: 'Lora', serif;
   padding: 12px 16px;
-  border: 1px solid #c9c4b6;
+  border: 1px solid #aebfdb;
   border-radius: 8px;
   font-size: 0.95rem;
   width: 280px;
@@ -347,21 +425,21 @@ a:hover {
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  background: #1b2a4a;
+  background: #2b4570;
   color: #fff;
   font-size: 0.95rem;
   cursor: pointer;
 }
 
 .subscribe-form input[type="submit"]:hover {
-  background: #142039;
+  background: #1c2f4d;
 }
 
 /* ---- Contact / reach-out section ---- */
 .contact-section {
   text-align: center;
   padding-top: 10px;
-  border-top: 1px solid #e6e3dc;
+  border-top: 2px solid #cdd9ea;
 }
 
 .contact-links {
@@ -426,7 +504,7 @@ a:hover {
   gap: 12px;
 }
 
-.post-meta { color: #888; margin: 0; }
+.post-meta { color: #6b7688; margin: 0; }
 
 .post-content { margin-top: 10px; font-size: 1.08rem; }
 .post-content h2 { margin-top: 36px; font-size: 1.5rem; }
@@ -441,7 +519,7 @@ a:hover {
 .site-footer {
   text-align: center;
   padding: 32px 0;
-  color: #999;
+  color: #7d889a;
   font-size: 0.85rem;
   font-family: 'Lora', serif;
 }
@@ -458,5 +536,4 @@ a:hover {
   .intro-text h1 { font-size: 2.2rem; }
   .post-grid, .post-grid.grid-2 { grid-template-columns: 1fr; }
   .about-section { flex-direction: column; }
-  .subscribe-section { padding: 32px 24px; }
-}
+  .subscribe-section {
