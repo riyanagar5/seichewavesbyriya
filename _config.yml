@@ -39,6 +39,8 @@ defaults:
       collection_name: "papers"
 
 nav:
+  - title: Home
+    url: /
   - title: About
     url: /about/
   - title: Essays
