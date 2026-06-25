@@ -6,18 +6,6 @@ title: Memos
 <div class="page-content">
   <img src="{{ '/assets/images/memos-banner.jpg' | relative_url }}" alt="Sea" class="page-banner">
 
-  {% assign all_tags = site.memos | map: "tags" | join: "," | split: "," | uniq | sort %}
-  {% if all_tags.size > 0 %}
-    <div class="tag-row">
-      {% for tag in all_tags %}
-        {% if tag != "" %}
-          {% assign slug = tag | downcase | replace: " ", "-" %}
-          <a class="tag-pill" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
-        {% endif %}
-      {% endfor %}
-    </div>
-  {% endif %}
-
   <h1>Memos</h1>
 
   {% assign sorted = site.memos | sort: "date" | reverse %}
@@ -27,17 +15,7 @@ title: Memos
       <a class="grid-card" href="{{ item.url | relative_url }}">
         <img src="{{ item.thumbnail | default: '/assets/images/placeholder-thumb.jpg' | relative_url }}" alt="">
         <div class="grid-card-body">
-          <div class="grid-card-top-row">
-            <p class="grid-card-date">{{ item.date | date: "%b %-d, %Y" }}</p>
-            {% if item.tags and item.tags.size > 0 %}
-              <div class="tag-row-card">
-                {% for tag in item.tags limit: 2 %}
-                  {% assign slug = tag | downcase | replace: " ", "-" %}
-                  <a class="tag-pill-sm" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
+          <p class="grid-card-date">{{ item.date | date: "%b %-d, %Y" }}</p>
           <h3>{{ item.title }}</h3>
           <p>{{ item.description }}</p>
           <span class="read-more">Read more &rarr;</span>
