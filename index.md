@@ -16,7 +16,7 @@ title: Home
   </div>
 </section>
 
-<h2 class="section-title">Read, Ponder and Question</h2>
+<h2 class="section-title section-title-bold">Read, Ponder and Question</h2>
 
 {% assign featured = "" | split: "" %}
 {% assign featured = featured | concat: site.essays %}
@@ -31,17 +31,7 @@ title: Home
       <a class="grid-card" href="{{ post.url | relative_url }}">
         <img src="{{ post.thumbnail | default: '/assets/images/placeholder-thumb.jpg' | relative_url }}" alt="">
         <div class="grid-card-body">
-          <div class="grid-card-top-row">
-            <p class="grid-card-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-            {% if post.tags and post.tags.size > 0 %}
-              <div class="tag-row-card">
-                {% for tag in post.tags limit: 2 %}
-                  {% assign slug = tag | downcase | replace: " ", "-" %}
-                  <a class="tag-pill-sm" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
+          <p class="grid-card-date">{{ post.date | date: "%b %-d, %Y" }}</p>
           <h3>{{ post.title }}</h3>
           <p>{{ post.description }}</p>
           <span class="read-more">Read more &rarr;</span>
@@ -49,23 +39,15 @@ title: Home
       </a>
     {% endfor %}
   </div>
+
+  {% assign featured_page2 = featured | slice: 3, 3 %}
   <div class="post-grid carousel-page" data-page="1" hidden>
-    {% assign featured_page2 = featured | slice: 3, 3 %}
     {% for post in featured_page2 %}
       <a class="grid-card" href="{{ post.url | relative_url }}">
         <img src="{{ post.thumbnail | default: '/assets/images/placeholder-thumb.jpg' | relative_url }}" alt="">
         <div class="grid-card-body">
-          <div class="grid-card-top-row">
-            <p class="grid-card-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-            {% if post.tags and post.tags.size > 0 %}
-              <div class="tag-row-card">
-                {% for tag in post.tags limit: 2 %}
-                  {% assign slug = tag | downcase | replace: " ", "-" %}
-                  <a class="tag-pill-sm" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ tag }}</a>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
+          <p class="grid-card-date">{{ post.date | date: "%b %-d, %Y" }}</p>
+          <h3>{{ post.title }}</h3>
           <h3>{{ post.title }}</h3>
           <p>{{ post.description }}</p>
           <span class="read-more">Read more &rarr;</span>
@@ -78,7 +60,7 @@ title: Home
     <p><em>No featured posts yet. Add <code>featured: true</code> to a post's front matter to feature it here, with up to 6 total to fill both carousel pages.</em></p>
   {% endif %}
 
-  {% if featured.size > 3 %}
+  {% if featured_page2.size > 0 %}
     <div class="carousel-dots">
       <button class="carousel-dot active" data-goto="0" aria-label="Show articles 1 to 3"></button>
       <button class="carousel-dot" data-goto="1" aria-label="Show articles 4 to 6"></button>
@@ -90,7 +72,7 @@ title: Home
   (function() {
     var pages = document.querySelectorAll('.carousel-page');
     var dots = document.querySelectorAll('.carousel-dot');
-    if (pages.length < 2) return;
+    if (dots.length < 2) return;
     var current = 0;
     var autoTimer;
 
@@ -117,12 +99,13 @@ title: Home
     });
 
     startAuto();
+    startAuto();
   })();
 </script>
 
 <p class="quote-intro">My favourite quotes for thought ...</p>
 
-<div class="quote-banner">
+<div class="quote-banner quote-banner-sm">
   <img src="{{ '/assets/images/waves-banner.jpg' | relative_url }}" alt="Waves">
   <div class="quote-banner-overlay">
     <blockquote id="rotating-quote">
